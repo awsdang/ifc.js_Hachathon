@@ -1,0 +1,495 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+
+/* viewer */
+
+.viewer {
+@apply -z-10 outline-none fixed inset-0 h-full w-full
+}
+
+/* Joystick stuff */
+
+.joystickLeft {
+  @apply absolute bottom-0 left-0 z-40 rounded-3xl portrait:portraitLeft landscape:landscapeLeft;
+}
+
+.joystickRight {
+  @apply absolute bottom-0 right-0 z-40 rounded-3xl portrait:portraitRight landscape:landscapeRight;
+}
+
+  .portraitLeft {
+      width: 35%;
+      height: 45%;
+  }
+
+  .landscapeLeft {
+      width: 30%;
+      height: 100%;
+  }
+
+
+  .portraitRight {
+      width: 40%;
+      height: 25%;
+  }
+
+  .landscapeRight {
+      width: 30%;
+      height: 35%;
+  }
+
+
+/* sidebar */
+.sidebar {
+    @apply z-30 absolute flex flex-col-reverse grid-rows-4 lg:flex-col lg:h-auto top-14 lg:bottom-3 lg:top-auto right-0 lg:left-3
+    w-16 text-white scale-0 lg:scale-100; 
+}
+
+.sidebarIcon {
+        @apply z-30 relative flex items-center
+            justify-center h-12 w-12 mt-2 mb-2 mx-auto
+             bg-gray-800 text-white
+             hover:bg-gray-600 
+             rounded-3xl hover:rounded-xl
+             transition-all duration-200 ease-linear
+             cursor-pointer;
+    }
+
+  .clicked {
+      @apply hover:bg-gray-800
+           bg-gray-600 
+           hover:rounded-3xl rounded-xl;
+  }
+ 
+.sidebar-tooltip {
+    @apply absolute w-auto p-2 m-2 min-w-max left-14 rounded-md 
+    shadow-md text-white bg-gray-900 text-xs font-bold 
+    transition-all duration-100 scale-0 origin-left;
+    }
+
+.burger {
+       @apply z-20 fixed right-0 top-0
+       h-16  w-12 flex flex-col justify-center scale-100 lg:scale-0 cursor-pointer;
+    }
+    
+    .line {
+        @apply w-5 h-[2.5px] block rounded-lg m-1 bg-gray-900 group-hover:bg-gray-400;
+    }
+    .line.active {
+      @apply bg-gray-100
+    }
+
+
+/* tools */
+
+.tool {
+  @apply absolute top-0 lg:-bottom-2 lg:top-auto 
+  right-6 lg:right-auto lg:left-6 z-10 flex 
+  flex-col items-center;
+}
+
+.tool .icon {
+  @apply relative flex items-center 
+  mb-2 
+  right-6 lg:right-auto lg:left-6 mx-4
+  justify-center h-12 w-12 lg:mt-2 lg:mb-2 
+  bg-gray-700 text-white
+   font-bold
+  hover:bg-gray-600 
+  rounded-3xl hover:rounded-xl
+  transition-all duration-200 ease-linear
+}
+
+.comingSoon {
+  @apply z-40 absolute top-3 -left-2 -rotate-45 opacity-100 w-12 bg-red-600 text-center text-white font-semibold rounded-lg  px-1 text-[8px]
+}
+
+.ifcjs-dimension-label {
+  @apply font-bold bg-gray-800 text-white rounded-3xl px-3 py-0.5
+}
+
+.ifcjs-dimension-preview {
+  @apply bg-gray-800 opacity-60 rounded-xl w-3 h-3; 
+
+}
+
+.toolInstructions {
+  @apply absolute z-30 w-56 inset-x-0 mx-auto text-center bottom-5 font-bold bg-gray-800 text-white rounded-3xl px-3 py-0.5
+} 
+
+
+.tool .rangeSlider {
+@apply  mt-8 lg:mt-14 w-32 h-2 bg-gray-100 
+rounded-lg appearance-none -rotate-90
+cursor-pointer dark:bg-gray-800;
+}
+
+.tool .button {
+@apply  my-8 lg:my-2 mt-16 lg:mt-16 text-sm py-0.5 px-1.5 rounded-3xl bg-gray-800 text-gray-100 dark:text-gray-300 
+}
+
+.tool .text {
+  @apply absolute lg:relative flex items-center
+  justify-center h-12 w-12 lg:mt-2 lg:mb-2 mx-auto
+  bg-gray-800 text-white
+  text-sm font-bold
+  hover:bg-gray-600 
+  rounded-3xl hover:rounded-xl
+  transition-all duration-200 ease-linear
+}
+
+
+
+
+
+.commentDiv {
+  @apply flex content-center pointer-events-auto;
+}
+
+
+
+
+.deleteHide {
+  visibility: hidden;
+}
+
+.fading {
+  animation: fadeIn 2s;
+  -webkit-animation: fadeIn 2s;
+  -moz-animation: fadeIn 2s;
+  -o-animation: fadeIn 2s;
+  -ms-animation: fadeIn 2s;
+}
+
+.deleteComment {
+  @apply  bg-red-800 text-white font-bold px-3 pointer-events-auto rounded-3xl mr-2;
+
+}
+
+.comment {
+  @apply bg-gray-800 text-white font-bold  px-3 py-2 pointer-events-auto rounded-3xl;
+
+}
+
+
+.commentAdd {
+  @apply bg-gray-800 absolute z-30 w-80 inset-x-0 mx-auto 
+  text-center bottom-20 font-bold 
+  backdrop-blur-sm rounded-lg px-3 opacity-70
+}
+
+.commentAdd .commentInput{
+  @apply bg-gray-700 mt-4 rounded-lg py-2 px-2 backdrop-blur-sm w-72 text-white
+   focus:ring-indigo-500 overflow-hidden
+}
+
+.commentAdd .commentButton{
+  @apply mt-2 mb-4 bg-gray-900 text-white font-bold px-3 py-2 pointer-events-auto rounded-lg
+}
+
+
+.blurredBg {
+@apply fixed z-30 inset-0 w-full h-full bg-black bg-opacity-40 backdrop-blur-md content-center; 
+}
+
+.blurredBg .box {
+  @apply relative flex top-20 text-center z-30 font-bold;
+      animation: fadeIn 2s;
+    -webkit-animation: fadeIn 2s;
+    -moz-animation: fadeIn 2s;
+    -o-animation: fadeIn 2s;
+    -ms-animation: fadeIn 2s;
+}
+
+
+.blurredBg .learn {
+  @apply relative flex flex-col inset-x-0 content-center text-center font-bold top-1/4 mt-20 ;
+      animation: fadeIn 2s;
+    -webkit-animation: fadeIn 2s;
+    -moz-animation: fadeIn 2s;
+    -o-animation: fadeIn 2s;
+    -ms-animation: fadeIn 2s;
+}
+
+.blurredBg .learnMobile {
+  @apply relative flex flex-col inset-x-0 content-center text-center font-bold top-20 mt-20 ;
+      animation: fadeIn 2s;
+    -webkit-animation: fadeIn 2s;
+    -moz-animation: fadeIn 2s;
+    -o-animation: fadeIn 2s;
+    -ms-animation: fadeIn 2s;
+}
+
+.blurredBg .language {
+  @apply relative flex  text-center items-center text-white top-20 z-50 m-auto w-24  bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700;
+    animation: fadeIn 2s;
+    -webkit-animation: fadeIn 2s;
+    -moz-animation: fadeIn 2s;
+    -o-animation: fadeIn 2s;
+    -ms-animation: fadeIn 2s;
+}
+
+.blurredBg .language .text {
+  @apply text-center m-auto
+}
+
+.blurredBg .box .text {
+  @apply m-auto whitespace-nowrap;
+
+}
+
+.blurredBg .clickAnywhere {
+  @apply fixed flex text-center top-1/3 z-30 font-bold content-center  inset-x-0;
+}
+
+.blurredBg .clickAnywhere .text {
+@apply  m-auto top-1/2 animate-pulse content-center;
+}
+.blurredBg .handTouch{
+  @apply fixed flex inset-x-0 m-auto content-center top-1/3 mt-10  
+}
+
+
+
+
+.joystickInstructions .joystickNipple {
+  @apply absolute z-40 flex flex-col inset-0 text-center top-auto bottom-20
+}
+
+.joystickInstructions .joystickNipple i{
+  @apply animate-ping-revese text-white text-opacity-30 text-[6.5rem]
+}
+
+.joystickInstructions .joystickNipple p {
+  @apply text-xs text-black p-3 font-bold opacity-80
+}
+
+
+
+.blurredBg .handTouch svg{
+  @apply w-20 h-auto mx-auto opacity-50; 
+  animation: moveHand 6s infinite;
+  -webkit-animation: moveHand 6s infinite;
+  -moz-animation: moveHand 6s infinite;
+  -o-animation: moveHand 6s infinite;
+  -ms-animation: moveHand 6s infinite;
+}
+
+
+.blurredBg .mobile  {
+  @apply absolute flex bottom-0 inset-x-0 content-center w-64 mx-auto;
+  animation: fadeIn 2s;
+  -webkit-animation: fadeIn 2s;
+  -moz-animation: fadeIn 2s;
+  -o-animation: fadeIn 2s;
+  -ms-animation: fadeIn 2s;
+  }
+
+
+
+
+
+.animate-ping-revese {
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+
+
+
+.blurredBg .keyboard  {
+  @apply absolute z-10 flex flex-col inset-x-0 content-center top-2/3;
+  animation: fadeIn 2s;
+  -webkit-animation: fadeIn 2s;
+  -moz-animation: fadeIn 2s;
+  -o-animation: fadeIn 2s;
+  -ms-animation: fadeIn 2s;
+  }
+
+    .blurredBg .keyboard .keyboardImg{
+      @apply absolute flex flex-col inset-x-0 content-center top-2/3 w-auto h-auto lg:h-40 container mx-auto px-3;
+    }
+
+    .blurredBg .keyboard .mouse {
+      animation: moveMouse 8s infinite;
+-webkit-animation: moveMouse 8s infinite;
+-moz-animation: moveMouse 8s infinite;
+-o-animation: moveMouse 8s infinite;
+-ms-animation: moveMouse 8s infinite;
+    }
+
+
+    @keyframes moveMouse{
+      0% { transform: translate(2px, 0px); }
+      50% { transform: translate(-2px, 0px); }
+      100% { transform: translate(2px, 0px); }
+    }
+
+    @-moz-keyframes moveMouse{
+      0% { transform: translate(2px, 0px); }
+      50% { transform: translate(-2px, 0px); }
+      100% { transform: translate(2px, 0px); }
+    }
+
+    @-webkit-keyframes moveMouse{
+      0% { transform: translate(2px, 0px); }
+      50% { transform: translate(-2px, 0px); }
+      100% { transform: translate(2px, 0px); }
+    }
+
+    @-o-keyframes moveMouse{
+      0% { transform: translate(2px, 0px); }
+      50% { transform: translate(-2px, 0px); }
+      100% { transform: translate(2px, 0px); }
+    }
+
+    @-ms-keyframes moveMouse{
+      0% { transform: translate(2px, 0px); }
+      50% { transform: translate(-2px, 0px); }
+      100% { transform: translate(2px, 0px); }
+    }
+
+    @keyframes moveHand{
+      0% { transform: translate(4px, 0px); }
+      50% { transform: translate(-4px, 0px); }
+      100% { transform: translate(4px, 0px); }
+    }
+
+    @-moz-keyframes moveHand{
+      0% { transform: translate(4px, 0px); }
+      50% { transform: translate(-4px, 0px); }
+      100% { transform: translate(4px, 0px); }
+    }
+
+    @-webkit-keyframes moveHand{
+      0% { transform: translate(4px, 0px); }
+      50% { transform: translate(-4px, 0px); }
+      100% { transform: translate(4px, 0px); }
+    }
+
+    @-o-keyframes moveHand{
+      0% { transform: translate(4px, 0px); }
+      50% { transform: translate(-4px, 0px); }
+      100% { transform: translate(4px, 0px); }
+    }
+
+    @-ms-keyframes moveHand{
+      0% { transform: translate(4px, 0px); }
+      50% { transform: translate(-4px, 0px); }
+      100% { transform: translate(4px, 0px); }
+    }
+    
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-moz-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-webkit-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-o-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-ms-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes ping {
+  0%, 25% {
+      transform: scale(1.2);
+      opacity: 0;
+  }
+}
+
+/* Mobile Phone stuff */
+/* 
+.sidebar-mobile {
+  @apply z-40 fixed right-0 top-0
+   h-screen w-16 flex flex-col
+    text-white shadow-md scale-100 lg:scale-0;
+}
+
+.speedTool-mobile {
+  @apply absolute top-1/2 right-0 z-50 flex flex-col items-center mt-2;
+} */
+
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+/* burger menu transition */
+
+.burgerMenu .line{
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+
+#burgerMenu.active .line:nth-child(2){
+  opacity: 0;
+}
+
+#burgerMenu.active .line:nth-child(1){
+  -webkit-transform: translateY(6.5px) rotate(45deg);
+  -ms-transform: translateY(6.5px) rotate(45deg);
+  -o-transform: translateY(6.5px) rotate(45deg);
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+#burgerMenu.active .line:nth-child(3){
+  -webkit-transform: translateY(-6.5px) rotate(-45deg);
+  -ms-transform: translateY(-6.5px) rotate(-45deg);
+  -o-transform: translateY(-6.5px) rotate(-45deg);
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+
+
+/* progress bar */
+#progress-loader {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+#progress-loader {
+  width: 150px;
+  height: 3px;
+  border-radius: 7px;
+}
+
+#progress {
+  content: '';
+  width: 0px;
+  height: 3px;
+  border-radius: 7px;
+  transition: 0.5s;
+}
+
+};
+
+
+
+  
+
+
