@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <link rel="icon" href=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="/dist/output.css" rel="stylesheet"/>
+    <script src="https://kit.fontawesome.com/a6b681584d.js" crossorigin="anonymous"></script>
+    <script> time = (2 / navigator.connection.downlink) * 6000</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" type="text/javascript"></script>
+    <script src="https://code.createjs.com/1.0.0/preloadjs.min.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/hold-event@0.1.0/dist/hold-event.min.js"></script>
+    <title>Change THIS</title>
+  </head>
+
+  <div id="progress-loader" class="z-40 bg-gray-100">
+    <div id="progress" class="inset-0 bg-gray-600"></div>
+  </div>
+
+  <body class="overflow-hidden">
+
+    <div class="burger">
+      <div id="burger2sidebar">
+        <div class="burgerMenu group" id="burgerMenu">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </div>
+    </div>
+
+    <div id="sidebar" class="sidebar">
+      <div
+        id="infoToggle"
+        class="sidebarIcon group"
+        onclick="instructions()"
+      >
+        <i class="fa-solid fa-info"></i>
+        <span class="sidebar-tooltip group-hover:lg:scale-100">
+          Instructions
+        </span>
+      </div>
+
+      <div id="cameraToggle"
+        class="sidebarIcon group"
+        onclick="toggleTool('cameraTool', 'cameraToggle')"
+      >
+        <div class="comingSoon">SOON</div>
+        <i class="fa-solid fa-video"></i>
+        <span class="sidebar-tooltip group-hover:lg:scale-100">
+          Control Camera
+        </span>
+
+        <div id="cameraTool" class="tool hidden">
+          <div
+            id="ghostToggle"
+            class="icon group"
+            onclick="toggleTool('ghostTool', 'ghostToggle')"
+          >
+            <div class="comingSoon">SOON</div>
+            <i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i>
+            <span class="sidebar-tooltip group-hover:lg:scale-100">
+              Toggle Ghost Mode
+            </span>
+          </div>
+
+          <div
+            id="videoToggle"
+            class="icon group"
+            onclick="toggleTool('videoTool', 'videoToggle')"
+          >
+            <div class="comingSoon">SOON</div>
+            <i class="fa-solid fa-display"></i>
+            <span class="sidebar-tooltip group-hover:lg:scale-100">
+              Shots & WalkThroughs
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="commentsToggle"
+        class="sidebarIcon group"
+      ><div class="comingSoon">SOON</div>
+        <i class="fa-solid fa-comments"></i>
+        <span class="sidebar-tooltip group-hover:lg:scale-100">
+          Add Comments
+        </span>
+      </div>
+
+      <div
+        id="planToggle"
+        class="sidebarIcon group"
+        onclick="toggleTool('planTool', 'planToggle')"
+      >
+        <i class="fa-solid fa-layer-group"></i>
+        <span class="sidebar-tooltip group-hover:lg:scale-100"> Floor Plans </span>
+
+        <div id="planTool" class="hidden tool">
+        </div>
+      </div>
+
+      <div
+        id="rulerToggle"
+        class="sidebarIcon group"
+      >
+        <i class="fa-solid fa-ruler-combined"></i>
+        <span class="sidebar-tooltip group-hover:lg:scale-100">
+          Measure Dimensions
+        </span>
+      </div>
+
+      <div
+        id="elementsToggle"
+        class="sidebarIcon group"
+        onclick="toggleTool('elementsTool', 'elementsToggle')"
+      >
+        <i class="fa-solid fa-eye"></i>
+        <span class="sidebar-tooltip group-hover:lg:scale-100">
+          Show/Hide Elements
+        </span>
+        <div id="elementsTool" class="tool hidden">
+          <div
+            id="slabToggle"
+            class="icon group"
+            onclick="toggleTool('soonTool', 'soonTool')"
+          >
+            <div class="comingSoon">SOON</div>
+            <i class="fa-solid fa-pallet"></i>
+            <span class="sidebar-tooltip group-hover:lg:scale-100">
+              Show/Hide Slabs
+            </span>
+          </div>
+
+          <div
+            id="wallToggle"
+            class="icon group"
+            onclick="toggleTool('soonTool', 'soonTool')"
+          >
+            <div class="comingSoon">SOON</div>
+            <i class="fa-solid fa-grip-lines-vertical"></i>
+            <span class="sidebar-tooltip group-hover:lg:scale-100">
+              Show/Hide Walls
+            </span>
+          </div>
+
+          <div
+            id="stairsToggle"
+            class="icon group"
+            onclick="toggleTool('soonTool', 'soonTool')"
+          >
+            <div class="comingSoon">SOON</div>
+            <i class="fa-solid fa-stairs"></i>
+            <span class="sidebar-tooltip group-hover:lg:scale-100">
+              Show/Hide Stairs
+            </span>
+          </div>
+
+          <div
+            id="bathToggle"
+            class="icon group"
+            onclick="toggleTool('soonTool', 'soonTool')"
+          >
+            <div class="comingSoon">SOON</div>
+            <i class="fa-solid fa-faucet"></i>
+            <span class="sidebar-tooltip group-hover:lg:scale-100">
+              Show/Hide Utilities
+            </span>
+          </div>
+
+          <div
+            id="objectToggle"
+            class="icon group"
+            onclick="toggleTool('soonTool', 'soonTool')"
+          >
+            <div class="comingSoon">SOON</div>
+            <i class="fa-brands fa-buromobelexperte"></i>
+            <span class="sidebar-tooltip group-hover:lg:scale-100">
+              Show/Hide an Object
+            </span>
+          </div>
+
+          <div
+            id="furnitureToggle"
+            class="icon group"
+            onclick="toggleTool('soonTool', 'soonTool')"
+          >
+            <div class="comingSoon">SOON</div>
+            <i class="fa-solid fa-couch"></i>
+            <span class="sidebar-tooltip group-hover:lg:scale-100">
+              Show/Hide Furniture
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="shareToggle"
+        class="sidebarIcon group"
+        onclick="toggleTool('shareTool', 'shareToggle')"
+      >
+        <i class="fa-solid fa-share"></i>
+        <span class="sidebar-tooltip group-hover:lg:scale-100">
+          Share Project
+        </span>
+
+        <div id="shareTool" class="tool hidden">
+          <div
+            id="linkToggle"
+            class="icon group"
+            onclick="navigator.clipboard.writeText(window.location.href);"
+          >
+            <i class="fa-solid fa-link"></i>
+            <span class="sidebar-tooltip group-hover:lg:scale-100">
+              Share Link
+            </span>
+          </div>
+
+          <div id="printToggle" class="icon group" onclick="window.print();">
+            <i class="fa-solid fa-print"></i>
+            <span class="sidebar-tooltip group-hover:lg:scale-100">
+              Print
+            </span>
+          </div>
+
+          <div
+            id="liveViewToggle"
+            class="icon group"
+            onclick="toggleTool('soonTool', 'soonTool')"
+          >
+            <div class="comingSoon">SOON</div>
+            <i class="fa-solid fa-chalkboard-user"></i>
+            <span class="sidebar-tooltip group-hover:lg:scale-100">
+              Live View
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="speedToggle"
+        class="sidebarIcon group"
+        onclick="toggleTool('speedTool', 'speedToggle')"
+      >
+        <i class="fa-solid fa-person-running"></i>
+        <span class="sidebar-tooltip group-hover:lg:scale-100">
+          Control Movement Speed
+        </span>
+
+        <div id="speedTool" class="tool hidden">
+          <button id="faster" class="button">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <input
+            id="speedRange"
+            type="range"
+            min="1"
+            value="10"
+            max="40"
+            class="rangeSlider"
+          />
+          <button id="slower" class="button">
+            <i class="fa-solid fa-minus"></i>
+          </button>
+          <span id="speed" class="text"></span>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+    
+    <div id="viewer-container" class="viewer"></div>
+    <div class="hidden">
+      <span id="bundleProgress">0</span>
+      <span id="filesProgress">0</span>
+      <span id="UnzipProgress">0</span>
+    </div>
+    
+    <script src="welcome.js"></script>
+    <script src="viewerFucntions.js"></script>
+    <script>
+      const wasmPath = "wasm/";
+      const workerPath = "wasm/IFCWorker.js";
+      const projectPath = "models/052.zip";
+      const cam = {
+        "camX": 0,
+        "camY": 0,
+        "camZ": 0,
+        "camAZ": 0,
+        "camPO": 0
+      }
+    </script>
+    <script src="bundle.js"></script>
+  </body>
+
+<script>
+
+</script>
+
+  <!-- idk if i need this! -->
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.0/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script> -->
+
+</html>
